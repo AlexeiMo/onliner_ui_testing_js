@@ -14,7 +14,6 @@ Selenium testing using WebdriverIO framework for "https://onliner.by"
 
 ## Config
 - onliner_ui_testing_js/package.json - file which is used to install dependencies
-  object used to configure test environment (e.g. browser options)
 - onliner_ui_testing_js/wdio.conf.js - configuration file for WebdriverIO framework
 
 
