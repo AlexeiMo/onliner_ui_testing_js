@@ -6,6 +6,10 @@ class HomePage {
     get passwordInput() { return $('#auth-container input[type="password"]') }
     get submitLoginButton() { return $('#auth-container button') }
     get profileImage() { return $('.b-top-profile__image.js-header-user-avatar') }
+    get iFrame() { return $('.modal-iframe') }
+    get searchInput() { return $('.search__input') }
+    get searchResults() { return $$('.product__title>a') }
+    get searchFrame() { return $('ul.search__results') }
 
     clickLoginButton() {
         this.loginButton.waitForDisplayed()
@@ -38,6 +42,14 @@ class HomePage {
     clickSubmitLoginButton() {
         this.submitLoginButton.waitForDisplayed()
         this.submitLoginButton.click()
+    }
+
+    switchToSearchFrame() {
+        browser.switchToFrame(this.iFrame)
+    }
+
+    setSearchOption(text) {
+        this.searchInput.setValue(text)
     }
 
 }
