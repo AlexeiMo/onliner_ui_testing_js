@@ -181,8 +181,9 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+        browser.maximizeWindow()
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -208,6 +209,8 @@ exports.config = {
         global.assert = chai.assert
         global.should = chai.should
         global.expect = chai.expect
+
+        browser.url('/')
     },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling

@@ -9,7 +9,6 @@ class HomePage {
     get iFrame() { return $('.modal-iframe') }
     get searchInput() { return $('.search__input') }
     get searchResults() { return $$('.product__title>a') }
-    get searchFrame() { return $('ul.search__results') }
 
     clickLoginButton() {
         this.loginButton.waitForDisplayed()
@@ -23,6 +22,7 @@ class HomePage {
 
     clickCategoryButton(text) {
         this.categoryButtons.forEach((el) => {
+            el.waitForDisplayed()
             if(el.getText() === text) {
                 el.click()
             }

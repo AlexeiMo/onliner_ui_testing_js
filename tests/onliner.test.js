@@ -1,19 +1,32 @@
 const homePageSteps = require('../steps/homepage.steps')
-const loginData = require('../test_data/login.data')
+const catalogPageSteps = require('../steps/catalogpage.steps')
+const testData = require('../test_data/test.data')
 
-describe('Onliner.by smoke tests', function() {
-    it.skip('should authorize user', () => {
-        browser.maximizeWindow()
-        browser.url('/')
+describe('Onliner.by smoke tests', function () {
+    it('should authorize user', () => {
         homePageSteps.openLoginForm()
-        homePageSteps.enterCredentials(loginData.login, loginData.password)
+        homePageSteps.enterCredentials(testData.login.login, testData.login.password)
         homePageSteps.submitCredentials()
         homePageSteps.verifyLogin()
     })
     it('should search item', () => {
-        browser.maximizeWindow()
-        browser.url('/')
-        homePageSteps.searchItem("Thinkpad T14")
-        homePageSteps.verifySearchResults("Thinkpad T14")
+        homePageSteps.searchItem(testData.search.searchOption)
+        homePageSteps.verifySearchResults(testData.search.searchOption)
+    })
+    it('should navigate to catalog page', () => {
+        homePageSteps.navigateToCategory(testData.navigation.category)
+        homePageSteps.verifyNavigation(testData.navigation.categoryURL)
+    })
+    it.only('should compare 2 products', () => {
+        homePageSteps.navigateToCategory(testData.navigation.category)
+        catalogPageSteps.openCategory(testData.compare.category)
+        catalogPageSteps.openSubcategory(testData.compare.subCategory)
+        catalogPageSteps.openProductCategory(testData.compare.productCategory)
+        catalogPageSteps.markProductToCompare(0)
+        catalogPageSteps.markProductToCompare(1)
+        const title1 = catalogPageSteps.getProductTitle(0)
+        const title2 = catalogPageSteps.getProductTitle(1)
+        catalogPageSteps.openCompareForm()
+        catalogPageSteps.verifyCompare(testData.compare.compareUrl, title1, title2)
     })
 })
