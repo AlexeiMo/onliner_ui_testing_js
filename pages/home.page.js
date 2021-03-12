@@ -1,39 +1,44 @@
 class HomePage {
-    get loginButton() { return $('#userbar>div>div>div>div:nth-child(1)') }
+    get loginButton() { return $('.auth-bar__item.auth-bar__item--text') }
     get cartButton() { return $('#cart-desktop a') }
-    get catalogButton() { return $('.b-main-navigation>:nth-child(1)>:nth-child(2)>span') }
+    get categoryButtons() { return $$('.b-main-navigation__text') }
     get loginInput() { return $('#auth-container input[type="text"]')}
     get passwordInput() { return $('#auth-container input[type="password"]')}
     get submitLoginButton() { return $('#auth-container button')}
 
     clickLoginButton() {
-        this.loginButton.waitForDisplayed()
-        this.loginButton.click()
+        homePage.loginButton.waitForDisplayed()
+        homePage.loginButton.click()
     }
 
     clickCartButton() { // not work in console
-        this.cartButton.waitForDisplayed()
-        this.cartButton.click()
+        homePage.cartButton.waitForDisplayed()
+        homePage.cartButton.click()
     }
 
-    clickCatalogButton() {
-        this.catalogButton.waitForDisplayed()
-        this.catalogButton.click()
+    clickCategoryButton(text) {
+        homePage.categoryButtons.forEach((el) => {
+            if(el.getText() === text) {
+                el.click()
+            }
+        })
     }
 
     setLogin(text) {    // not work in console
-        this.loginInput.waitForDisplayed()
-        this.loginInput.setValue(text)
+        homePage.loginInput.waitForDisplayed()
+        homePage.loginInput.setValue(text)
     }
 
     setPassword(text) { // not work in console
-        this.passwordInput.waitForDisplayed()
-        this.passwordInput.setValue(text)
+        homePage.passwordInput.waitForDisplayed()
+        homePage.passwordInput.setValue(text)
     }
 
     clickSubmitLoginButton() {
-        this.submitLoginButton.waitForDisplayed()
-        this.submitLoginButton.click()
+        homePage.submitLoginButton.waitForDisplayed()
+        homePage.submitLoginButton.click()
     }
 
 }
+export const homePage = new HomePage()
+// module.exports = new HomePage()
