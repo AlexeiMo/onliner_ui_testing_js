@@ -1,5 +1,7 @@
-const homePageSteps = require('../steps/homepage.steps')
-const catalogPageSteps = require('../steps/catalogpage.steps')
+const homePageSteps = require('../steps/homePage.steps')
+const catalogPageSteps = require('../steps/catalogPage.steps')
+const productPageSteps = require('../steps/productPage.steps')
+const cartPageSteps = require('../steps/cartPage.steps')
 const testData = require('../test_data/test.data')
 
 describe('Onliner.by smoke tests', function () {
@@ -17,7 +19,7 @@ describe('Onliner.by smoke tests', function () {
         homePageSteps.navigateToCategory(testData.navigation.category)
         homePageSteps.verifyNavigation(testData.navigation.categoryURL)
     })
-    it.only('should compare 2 products', () => {
+    it('should compare 2 products', () => {
         homePageSteps.navigateToCategory(testData.navigation.category)
         catalogPageSteps.openCategory(testData.compare.category)
         catalogPageSteps.openSubcategory(testData.compare.subCategory)
@@ -28,5 +30,22 @@ describe('Onliner.by smoke tests', function () {
         const title2 = catalogPageSteps.getProductTitle(1)
         catalogPageSteps.openCompareForm()
         catalogPageSteps.verifyCompare(testData.compare.compareUrl, title1, title2)
+    })
+    it('should create an order', () => {
+        homePageSteps.navigateToCategory(testData.navigation.category)
+        catalogPageSteps.openCategory(testData.compare.category)
+        catalogPageSteps.openSubcategory(testData.compare.subCategory)
+        catalogPageSteps.openProductCategory(testData.compare.productCategory)
+        catalogPageSteps.openProductPage(0)
+        productPageSteps.moveToProductTraders()
+        productPageSteps.acceptLocation()
+        try {
+            productPageSteps.addProductToCart(0)
+            productPageSteps.openCartPage()
+            cartPageSteps.createOrder()
+            cartPageSteps.verifyOrderPage(testData.order.orderUrl, testData.order.orderTitle)
+        } finally {
+            cartPageSteps.removeProduct()
+        }
     })
 })

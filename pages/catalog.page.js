@@ -9,11 +9,7 @@ class CatalogPage {
     }
 
     get productCategoriesButtons() {
-        return $$('.catalog-navigation-list__dropdown-title')
-    }
-
-    get productsField() {
-        return $('.js-schema-results.schema-grid__center-column')
+        return $$('.catalog-navigation-list__aside-item.catalog-navigation-list__aside-item_active .catalog-navigation-list__dropdown-title')
     }
 
     get productsTitles() {
@@ -21,7 +17,7 @@ class CatalogPage {
     }
 
     get compareCheckboxes() {
-        return $$('.i-checkbox.i-checkbox_yellow')
+        return $$('.schema-product__control')
     }
 
     get compareButton() {
@@ -32,8 +28,16 @@ class CatalogPage {
         return $$('.product-table__row.product-table__row_header.product-table__row_top .product-summary__caption')
     }
 
+    get clearCompareButton() {
+        return $('.compare-button__state.compare-button__state_clear.compare-button__state_hidden')
+    }
+
+    get productPageLinks() {
+        return $$('.schema-product__title span')
+    }
+
     clickCategoryButton(text) {
-        for(let button of this.categoriesButtons) {
+        for (let button of this.categoriesButtons) {
             button.waitForDisplayed()
             if (button.getText() === text) {
                 button.click()
@@ -43,7 +47,7 @@ class CatalogPage {
     }
 
     moveToSubCategory(text) {
-        for(let el of this.subCategories) {
+        for (let el of this.subCategories) {
             el.waitForDisplayed()
             if (el.getText() === text) {
                 el.moveTo()
@@ -53,9 +57,8 @@ class CatalogPage {
     }
 
     clickProductCategory(text) {
-        for(let button of this.productCategoriesButtons) {
+        for (let button of this.productCategoriesButtons) {
             button.waitForDisplayed()
-            console.log(button.getText())
             if (button.getText() === text) {
                 button.click()
                 break
@@ -82,5 +85,16 @@ class CatalogPage {
         this.comparedProducts[index].waitForDisplayed()
         return this.comparedProducts[index].getText()
     }
+
+    clickClearCompareButton() {
+        this.clearCompareButton.waitForExist()
+        this.clearCompareButton.click()
+    }
+
+    clickProductPageLink(index) {
+        this.productPageLinks[index].waitForDisplayed()
+        this.productPageLinks[index].click()
+    }
 }
+
 module.exports = new CatalogPage()

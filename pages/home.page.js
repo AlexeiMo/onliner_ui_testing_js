@@ -1,14 +1,43 @@
 class HomePage {
-    get loginButton() { return $('.auth-bar__item.auth-bar__item--text') }
-    get cartButton() { return $('#cart-desktop a') }
-    get categoryButtons() { return $$('.b-main-navigation__text') }
-    get loginInput() { return $('#auth-container input[type="text"]') }
-    get passwordInput() { return $('#auth-container input[type="password"]') }
-    get submitLoginButton() { return $('#auth-container button') }
-    get profileImage() { return $('.b-top-profile__image.js-header-user-avatar') }
-    get iFrame() { return $('.modal-iframe') }
-    get searchInput() { return $('.search__input') }
-    get searchResults() { return $$('.product__title>a') }
+    get loginButton() {
+        return $('.auth-bar__item.auth-bar__item--text')
+    }
+
+    get cartButton() {
+        return $('#cart-desktop')
+    }
+
+    get categoryButtons() {
+        return $$('.b-main-navigation__text')
+    }
+
+    get loginInput() {
+        return $('#auth-container input[type="text"]')
+    }
+
+    get passwordInput() {
+        return $('#auth-container input[type="password"]')
+    }
+
+    get submitLoginButton() {
+        return $('#auth-container button')
+    }
+
+    get profileImage() {
+        return $('.b-top-profile__image.js-header-user-avatar')
+    }
+
+    get iFrame() {
+        return $('.modal-iframe')
+    }
+
+    get searchInput() {
+        return $('.search__input')
+    }
+
+    get searchResults() {
+        return $$('.product__title>a')
+    }
 
     clickLoginButton() {
         this.loginButton.waitForDisplayed()
@@ -23,7 +52,7 @@ class HomePage {
     clickCategoryButton(text) {
         this.categoryButtons.forEach((el) => {
             el.waitForDisplayed()
-            if(el.getText() === text) {
+            if (el.getText() === text) {
                 el.click()
             }
         })
@@ -53,4 +82,5 @@ class HomePage {
     }
 
 }
+
 module.exports = new HomePage()

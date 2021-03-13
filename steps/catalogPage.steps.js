@@ -52,6 +52,17 @@ class CatalogPageSteps {
         assert.equal(title2, compTitle2)
     }
 
+    clearCompare() {
+        catalogPage.clickClearCompareButton()
+    }
+
+    openProductPage(index) {
+        browser.waitUntil(() => {
+            return catalogPage.productPageLinks.length > 0
+        })
+        catalogPage.clickProductPageLink(index)
+    }
+
 }
 
 module.exports = new CatalogPageSteps()

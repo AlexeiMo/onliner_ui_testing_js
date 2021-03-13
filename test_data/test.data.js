@@ -15,5 +15,9 @@ module.exports = {
         subCategory: "Телевидение и видео",
         productCategory: "Телевизоры",
         compareUrl: "https://catalog.onliner.by/compare/"
+    },
+    order: {
+        orderUrl: "https://cart.onliner.by/order",
+        orderTitle: "Оформление заказа"
     }
 }
