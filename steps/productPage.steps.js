@@ -5,16 +5,21 @@ const logger = log('test-basic')
 
 class ProductPageSteps {
 
+    get moveToProdTradersMsg() { return 'Move to product traders' }
+    get addProdToCartMsg() { return 'Add specified product to cart'}
+    get openCartPageMsg() { return 'Opening cart page'}
+    get acceptLocationMsg() { return 'Accepting location popup'}
+
     moveToProductTraders() {
-        logger.info('Move to product traders')
-        allure.startStep('Move to product traders')
+        logger.info(this.moveToProdTradersMsg)
+        allure.startStep(this.moveToProdTradersMsg)
         productPage.clickProductTraders()
         allure.endStep()
     }
 
     addProductToCart(index) {
-        logger.info('Add specified product to cart')
-        allure.startStep('Add specified product to cart')
+        logger.info(this.addProdToCartMsg)
+        allure.startStep(this.addProdToCartMsg)
         browser.waitUntil(() => {
             return productPage.buyProductButtons.length > 0
         })
@@ -23,15 +28,15 @@ class ProductPageSteps {
     }
 
     openCartPage() {
-        logger.info('Opening cart page')
-        allure.startStep('Opening cart page')
+        logger.info(this.openCartPageMsg)
+        allure.startStep(this.openCartPageMsg)
         productPage.clickCartButton()
         allure.endStep()
     }
 
     acceptLocation() {
-        logger.info('Accepting location popup')
-        allure.startStep('Accepting location popup')
+        logger.info(this.acceptLocationMsg)
+        allure.startStep(this.acceptLocationMsg)
         productPage.moveToLocationButton()
         productPage.clickLocationButton()
         allure.endStep()

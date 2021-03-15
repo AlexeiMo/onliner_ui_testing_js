@@ -6,24 +6,28 @@ const logger = log('test-basic')
 
 class CartPageSteps {
 
+    get createOrderMsg() { return 'Creating order' }
+    get verifyOrderPagaMsg() { return 'Verifying order page content' }
+    get removeProdMsg() { return 'Remove product from cart' }
+
     createOrder() {
-        logger.info('Creating order')
-        allure.startStep('Creating order')
+        logger.info(this.createOrderMsg)
+        allure.startStep(this.createOrderMsg)
         cartPage.clickCreateOrderButton()
         allure.endStep()
     }
 
     verifyOrderPage(url, title) {
-        logger.info('Verifying order page content')
-        allure.startStep('Verifying order page content')
+        logger.info(this.verifyOrderPagaMsg)
+        allure.startStep(this.verifyOrderPagaMsg)
         assert.equal(true, cartPage.getOrderTitle().includes(title))
         assert.equal(browser.getUrl(), url)
         allure.endStep()
     }
 
     removeProduct() {
-        logger.info('Remove product from cart')
-        allure.startStep('Remove product from cart')
+        logger.info(this.removeProdMsg)
+        allure.startStep(this.removeProdMsg)
         browser.url("https://cart.onliner.by/")
         cartPage.clickRemoveProductButton()
         allure.endStep()

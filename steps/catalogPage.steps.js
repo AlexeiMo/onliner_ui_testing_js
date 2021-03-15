@@ -6,9 +6,19 @@ const logger = log('test-basic')
 
 class CatalogPageSteps {
 
+    get openCatMsg() { return 'Open specified category' }
+    get openSubCatMsg() { return 'Open specified subcategory' }
+    get openProdCatMsg() { return 'Open specified product category' }
+    get markProdMsg() { return 'Mark product as "Compared"' }
+    get openComp() { return 'Open compare form' }
+    get getProdTitleMsg() { return 'Getting product title'}
+    get verifyCompMsg() { return 'Verifying compare process'}
+    get clearCompMsg() { return 'Clear compare popup'}
+    get openProdPageMsg() { return 'Opening specified product page'}
+
     openCategory(name) {
-        logger.info('Open specified category')
-        allure.startStep('Open specified category')
+        logger.info(this.openCatMsg)
+        allure.startStep(this.openCatMsg)
         browser.waitUntil(() => {
             return catalogPage.categoriesButtons.length > 0
         })
@@ -17,8 +27,8 @@ class CatalogPageSteps {
     }
 
     openSubcategory(name) {
-        logger.info('Open specified subcategory')
-        allure.startStep('Open specified subcategory')
+        logger.info(this.openSubCatMsg)
+        allure.startStep(this.openSubCatMsg)
         browser.waitUntil(() => {
             return catalogPage.subCategories.length > 0
         })
@@ -27,8 +37,8 @@ class CatalogPageSteps {
     }
 
     openProductCategory(name) {
-        logger.info('Open specified product category')
-        allure.startStep('Open specified product category')
+        logger.info(this.openProdCatMsg)
+        allure.startStep(this.openProdCatMsg)
         browser.waitUntil(() => {
             return catalogPage.productCategoriesButtons.length > 0
         })
@@ -37,8 +47,8 @@ class CatalogPageSteps {
     }
 
     markProductToCompare(index) {
-        logger.info('Mark product as "Compared"')
-        allure.startStep('Mark product as "Compared"')
+        logger.info(this.markProdMsg)
+        allure.startStep(this.markProdMsg)
         browser.waitUntil(() => {
             return catalogPage.compareCheckboxes.length > 0
         })
@@ -47,15 +57,15 @@ class CatalogPageSteps {
     }
 
     openCompareForm() {
-        logger.info('Open compare form')
-        allure.startStep('Open compare form')
+        logger.info(this.openComp)
+        allure.startStep(this.openComp)
         catalogPage.clickCompareButton()
         allure.endStep()
     }
 
     getProductTitle(index) {
-        logger.info('Getting product title')
-        allure.startStep('Getting product title')
+        logger.info(this.getProdTitleMsg)
+        allure.startStep(this.getProdTitleMsg)
         browser.waitUntil(() => {
             return catalogPage.productsTitles.length > 0
         })
@@ -64,8 +74,8 @@ class CatalogPageSteps {
     }
 
     verifyCompare(url, title1, title2) {
-        logger.info('Verifying compare process')
-        allure.startStep('Verifying compare process')
+        logger.info(this.verifyCompMsg)
+        allure.startStep(this.verifyCompMsg)
         browser.waitUntil(() => {
             return catalogPage.comparedProducts.length === 2
         })
@@ -78,15 +88,15 @@ class CatalogPageSteps {
     }
 
     clearCompare() {
-        logger.info('Clear compare popup')
-        allure.startStep('Clear compare popup')
+        logger.info(this.clearCompMsg)
+        allure.startStep(this.clearCompMsg)
         catalogPage.clickClearCompareButton()
         allure.endStep()
     }
 
     openProductPage(index) {
-        logger.info('Opening specified product page')
-        allure.startStep('Opening specified product page')
+        logger.info(this.openProdPageMsg)
+        allure.startStep(this.openProdPageMsg)
         browser.waitUntil(() => {
             return catalogPage.productPageLinks.length > 0
         })
