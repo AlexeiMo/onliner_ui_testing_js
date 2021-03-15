@@ -10,7 +10,9 @@ Selenium testing using WebdriverIO framework for "https://onliner.by"
 ## Repo Layout
 
 - onliner_ui_testing_js/pages - Page objects used to manipulate with test pages
+- onliner_ui_testing_js/steps - Steps which are used in tests
 - onliner_ui_testing_js/tests - tests which can be run on mocha
+- onliner_ui_testing_js/test_data - files with data which is used in tests
 
 ## Config
 - onliner_ui_testing_js/package.json - file which is used to install dependencies

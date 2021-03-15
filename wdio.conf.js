@@ -66,7 +66,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    // logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
@@ -77,10 +77,13 @@ exports.config = {
     // - @wdio/sumologic-reporter
     // - @wdio/cli, @wdio/config, @wdio/sync, @wdio/utils
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    // logLevels: {
-    //     webdriver: 'info',
-    //     '@wdio/applitools-service': 'info'
-    // },
+    logLevels: {
+        webdriver: 'error',
+        '@wdio/logger': 'info',
+    //     '@wdio/cli:launcher': 'error',
+    //     '@wdio/local-runner': 'error',
+    //     '@wdio/selenium-standalone-service': 'error'
+    },
     //
     // If you only want to run your tests until a specific amount of tests have failed use
     // bail (default is 0 - don't bail, run all tests).
@@ -107,7 +110,6 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['selenium-standalone'],
-    
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -128,10 +130,11 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec','dot',['allure', {outputDir: 'allure-results'}]],
-
-
-    
+    reporters: ['spec','dot',['allure', {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false
+    }]],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

@@ -4,7 +4,7 @@ const productPageSteps = require('../steps/productPage.steps')
 const cartPageSteps = require('../steps/cartPage.steps')
 const testData = require('../test_data/test.data')
 
-describe('Onliner.by smoke tests', function () {
+describe('Onliner.by smoke tests', () => {
     it('should authorize user', () => {
         homePageSteps.openLoginForm()
         homePageSteps.enterCredentials(testData.login.login, testData.login.password)

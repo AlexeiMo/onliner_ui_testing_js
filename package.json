@@ -23,6 +23,7 @@
     "webdriverio": "^7.1.1"
   },
   "dependencies": {
-    "@wdio/cli": "^7.1.1"
+    "@wdio/cli": "^7.1.1",
+    "@wdio/logger": "^7.0.0"
   }
 }

@@ -1,24 +1,32 @@
 const cartPage = require('../pages/cart.page')
-const allure = require('@wdio/allure-reporter')
+const allure = require('@wdio/allure-reporter').default
+const log = require('@wdio/logger').default
+const logger = log('test-basic')
 
 
 class CartPageSteps {
 
     createOrder() {
-        // allure.startStep('Creating order')
+        logger.info('Creating order')
+        allure.startStep('Creating order')
         cartPage.clickCreateOrderButton()
+        allure.endStep()
     }
 
     verifyOrderPage(url, title) {
-        // allure.startStep('Verifying order page content')
+        logger.info('Verifying order page content')
+        allure.startStep('Verifying order page content')
         assert.equal(true, cartPage.getOrderTitle().includes(title))
         assert.equal(browser.getUrl(), url)
+        allure.endStep()
     }
 
     removeProduct() {
-        // allure.startStep('Remove product from cart')
+        logger.info('Remove product from cart')
+        allure.startStep('Remove product from cart')
         browser.url("https://cart.onliner.by/")
         cartPage.clickRemoveProductButton()
+        allure.endStep()
     }
 }
 
