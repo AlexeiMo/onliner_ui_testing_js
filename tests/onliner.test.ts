@@ -1,8 +1,9 @@
-import { HomePageSteps } from '../steps/homePage.steps'
-import { CatalogPageSteps } from '../steps/catalogPage.steps'
-import { ProductPageSteps } from '../steps/productPage.steps'
-import { CartPageSteps } from '../steps/cartPage.steps'
-const  testData = require('../test_data/test.data')
+import {HomePageSteps} from '../steps/homePage.steps'
+import {CatalogPageSteps} from '../steps/catalogPage.steps'
+import {ProductPageSteps} from '../steps/productPage.steps'
+import {CartPageSteps} from '../steps/cartPage.steps'
+
+const testData = require('../test_data/test.data')
 
 describe('Onliner.by smoke tests', () => {
 
@@ -45,13 +46,10 @@ describe('Onliner.by smoke tests', () => {
         catalogPageSteps.openProductPage(0)
         productPageSteps.moveToProductTraders()
         productPageSteps.acceptLocation()
-        try {
-            productPageSteps.addProductToCart(0)
-            productPageSteps.openCartPage()
-            cartPageSteps.createOrder()
-            cartPageSteps.verifyOrderPage(testData.order.orderUrl, testData.order.orderTitle)
-        } finally {
-            cartPageSteps.removeProduct(testData.order.removeProductUrl)
-        }
+        productPageSteps.addProductToCart(0)
+        productPageSteps.openCartPage()
+        cartPageSteps.createOrder()
+        cartPageSteps.verifyOrderPage(testData.order.orderUrl, testData.order.orderTitle)
+        productPageSteps.removeProduct(testData.order.removeProductUrl)
     })
 })

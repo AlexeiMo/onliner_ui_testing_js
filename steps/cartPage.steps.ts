@@ -16,10 +16,6 @@ export class CartPageSteps extends PageSteps{
         return 'Verifying order page content';
     }
 
-    get removeProductMsg() {
-        return 'Remove product from cart';
-    }
-
     public createOrder() {
         this.log(this.createOrderMsg);
         this.cartPage.clickCreateOrderButton();
@@ -29,11 +25,5 @@ export class CartPageSteps extends PageSteps{
         this.log(this.verifyOrderPageMsg);
         expect(this.cartPage.getOrderTitle().includes(title)).to.equal(true);
         expect(browser.getUrl()).to.equal(url);
-    }
-
-    public removeProduct(url: string) {
-        this.log(this.removeProductMsg);
-        browser.url(url);
-        this.cartPage.clickRemoveProductButton();
     }
 }

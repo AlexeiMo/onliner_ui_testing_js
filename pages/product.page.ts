@@ -20,6 +20,10 @@ export class ProductPage {
         return $('.offers-list__description.offers-list__description_alter.offers-list__description_base');
     }
 
+    get removeProductButton() {
+        return $('.cart-form__offers-part.cart-form__offers-part_remove div');
+    }
+
     public clickProductTraders() {
         this.productTraders.waitForDisplayed();
         this.productTraders.click();
@@ -43,5 +47,11 @@ export class ProductPage {
     public clickLocationButton() {
         this.locationButton.waitForDisplayed();
         this.locationButton.click();
+    }
+
+    public clickRemoveProductButton() {
+        this.removeProductButton.waitForExist();
+        this.removeProductButton.moveTo();
+        this.removeProductButton.click();
     }
 }

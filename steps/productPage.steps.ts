@@ -7,6 +7,8 @@ export class ProductPageSteps extends PageSteps{
 
     private productPage = new ProductPage();
 
+    private isProductAdded = false;
+
     get moveToProductTradersMsg() {
         return 'Move to product traders';
     }
@@ -23,6 +25,10 @@ export class ProductPageSteps extends PageSteps{
         return 'Accepting location popup';
     }
 
+    get removeProductMsg() {
+        return 'Remove product from cart';
+    }
+
     public moveToProductTraders() {
         this.log(this.moveToProductTradersMsg);
         this.productPage.clickProductTraders();
@@ -34,6 +40,7 @@ export class ProductPageSteps extends PageSteps{
             return this.productPage.buyProductButtons.length > 0;
         })
         this.productPage.clickBuyProductButton(index);
+        this.isProductAdded = true;
     }
 
     public openCartPage() {
@@ -47,4 +54,11 @@ export class ProductPageSteps extends PageSteps{
         this.productPage.clickLocationButton();
     }
 
+    public removeProduct(url: string) {
+        if (this.isProductAdded) {
+            this.log(this.removeProductMsg);
+            browser.url(url);
+            this.productPage.clickRemoveProductButton();
+        }
+    }
 }
