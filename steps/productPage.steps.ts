@@ -1,11 +1,9 @@
 import {ProductPage} from 'pages/product.page';
-import allure from '@wdio/allure-reporter';
-import log from '@wdio/logger';
-const logger = log('test-basic');
+import PageSteps from "./page.steps";
 import chai from 'chai';
 const expect = chai.expect;
 
-export class ProductPageSteps {
+export class ProductPageSteps extends PageSteps{
 
     private productPage = new ProductPage();
 
@@ -26,35 +24,27 @@ export class ProductPageSteps {
     }
 
     public moveToProductTraders() {
-        logger.info(this.moveToProductTradersMsg);
-        allure.startStep(this.moveToProductTradersMsg);
+        this.log(this.moveToProductTradersMsg);
         this.productPage.clickProductTraders();
-        allure.endStep();
     }
 
     public addProductToCart(index: number) {
-        logger.info(this.addProductToCartMsg);
-        allure.startStep(this.addProductToCartMsg);
+        this.log(this.addProductToCartMsg);
         browser.waitUntil(() => {
             return this.productPage.buyProductButtons.length > 0;
         })
         this.productPage.clickBuyProductButton(index);
-        allure.endStep();
     }
 
     public openCartPage() {
-        logger.info(this.openCartPageMsg);
-        allure.startStep(this.openCartPageMsg);
+        this.log(this.openCartPageMsg);
         this.productPage.clickCartButton();
-        allure.endStep();
     }
 
     public acceptLocation() {
-        logger.info(this.acceptLocationMsg);
-        allure.startStep(this.acceptLocationMsg);
+        this.log(this.acceptLocationMsg);
         this.productPage.moveToLocationButton();
         this.productPage.clickLocationButton();
-        allure.endStep();
     }
 
 }

@@ -142,7 +142,6 @@ exports.config = {
         ui: 'bdd',
         timeout: 60000,
         compilers: [
-            // 'ts-node/register',
             'tsconfig-paths/register'
         ]
     },
@@ -188,7 +187,7 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {Object}         browser      instance of created browser/device session
      */
-    before: function (capabilities, specs) {
+    before: function (capabilities, specs, browser) {
         browser.maximizeWindow();
         require('ts-node').register({ files: true });
     },

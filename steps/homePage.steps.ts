@@ -1,12 +1,9 @@
 import {HomePage} from 'pages/home.page';
-import allure from '@wdio/allure-reporter';
-import log from '@wdio/logger';
-const logger = log('test-basic');
+import PageSteps from "./page.steps";
 import chai from 'chai';
 const expect = chai.expect;
 
-
-export class HomePageSteps {
+export class HomePageSteps extends PageSteps{
 
     private homePage = new HomePage();
 
@@ -43,46 +40,35 @@ export class HomePageSteps {
     }
 
     public openLoginForm() {
-        logger.info(this.openLoginFormMsg);
-        allure.startStep(this.openLoginFormMsg);
+        this.log(this.openLoginFormMsg)
         this.homePage.clickLoginButton();
-        allure.endStep();
     }
 
     public enterCredentials(login: string, password: string) {
-        logger.info(this.enterCredentialsMsg);
-        allure.startStep(this.enterCredentialsMsg);
+        this.log(this.enterCredentialsMsg);
         this.homePage.setLogin(login);
         this.homePage.setPassword(password);
-        allure.endStep();
     }
 
     public submitCredentials() {
-        logger.info(this.submitCredentialsMsg);
-        allure.startStep(this.submitCredentialsMsg);
+        this.log(this.submitCredentialsMsg);
         this.homePage.clickSubmitLoginButton();
-        allure.endStep();
     }
 
     public verifyLogin() {
-        logger.info(this.verifyLoginMsg);
-        allure.startStep(this.verifyLoginMsg);
+        this.log(this.verifyLoginMsg);
         this.homePage.profileImage.waitForDisplayed();
         expect(this.homePage.profileImage.isDisplayed()).to.equal(true);
-        allure.endStep();
     }
 
     public searchItem(item: string) {
-        logger.info(this.searchItemMsg);
-        allure.startStep(this.searchItemMsg);
+        this.log(this.searchItemMsg);
         this.homePage.switchToSearchFrame();
         this.homePage.setSearchOption(item);
-        allure.endStep();
     }
 
     public verifySearchResults(item: string) {
-        logger.info(this.verifySearchResultsMsg);
-        allure.startStep(this.verifySearchResultsMsg);
+        this.log(this.verifySearchResultsMsg);
         browser.waitUntil(() => {
             return this.homePage.searchResults.length > 0;
         })
@@ -90,24 +76,19 @@ export class HomePageSteps {
             let expression = res.getText().toUpperCase().includes(item.toUpperCase());
             expect(expression).to.equal(true);
         })
-        allure.endStep();
     }
 
     public navigateToCategory(category: string) {
-        logger.info(this.navigateToCategoryMsg);
-        allure.startStep(this.navigateToCategoryMsg);
+        this.log(this.navigateToCategoryMsg);
         browser.waitUntil(() => {
             return this.homePage.categoryButtons.length > 0;
         })
         this.homePage.clickCategoryButton(category);
-        allure.endStep();
     }
 
     public verifyNavigation(url: string) {
-        logger.info(this.verifyNavigationMsg);
-        allure.startStep(this.verifyNavigationMsg);
+        this.log(this.verifyNavigationMsg);
         expect(browser.getUrl()).to.equal(url);
-        allure.endStep();
     }
 
 }

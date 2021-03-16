@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "experimentalDecorators": true,
         "lib": [
             "dom",
             "es7"
@@ -20,7 +21,7 @@
         "types": ["@wdio/mocha-framework", "node", "@wdio/sync"]
     },    
     "include": [
-      "./tests/**/*.ts"
+      "./tests/**/*.ts",
     ],
   "exclude": [
       "./node_modules"
