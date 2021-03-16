@@ -18,6 +18,7 @@ module.exports = {
     },
     order: {
         orderUrl: "https://cart.onliner.by/order",
-        orderTitle: "Оформление заказа"
+        orderTitle: "Оформление заказа",
+        removeProductUrl: "https://cart.onliner.by/"
     }
 }

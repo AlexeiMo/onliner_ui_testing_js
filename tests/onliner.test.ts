@@ -1,10 +1,16 @@
-const homePageSteps = require('../steps/homePage.steps')
-const catalogPageSteps = require('../steps/catalogPage.steps')
-const productPageSteps = require('../steps/productPage.steps')
-const cartPageSteps = require('../steps/cartPage.steps')
-const testData = require('../test_data/test.data')
+import { HomePageSteps } from '../steps/homePage.steps'
+import { CatalogPageSteps } from '../steps/catalogPage.steps'
+import { ProductPageSteps } from '../steps/productPage.steps'
+import { CartPageSteps } from '../steps/cartPage.steps'
+const  testData = require('../test_data/test.data')
 
 describe('Onliner.by smoke tests', () => {
+
+    const homePageSteps = new HomePageSteps()
+    const catalogPageSteps = new CatalogPageSteps()
+    const productPageSteps = new ProductPageSteps()
+    const cartPageSteps = new CartPageSteps()
+
     it('should authorize user', () => {
         homePageSteps.openLoginForm()
         homePageSteps.enterCredentials(testData.login.login, testData.login.password)
@@ -45,7 +51,7 @@ describe('Onliner.by smoke tests', () => {
             cartPageSteps.createOrder()
             cartPageSteps.verifyOrderPage(testData.order.orderUrl, testData.order.orderTitle)
         } finally {
-            cartPageSteps.removeProduct()
+            cartPageSteps.removeProduct(testData.order.removeProductUrl)
         }
     })
 })

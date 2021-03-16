@@ -140,7 +140,11 @@ exports.config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 60000
+        timeout: 60000,
+        compilers: [
+            // 'ts-node/register',
+            'tsconfig-paths/register'
+        ]
     },
     //
     // =====
@@ -185,7 +189,8 @@ exports.config = {
      * @param {Object}         browser      instance of created browser/device session
      */
     before: function (capabilities, specs) {
-        browser.maximizeWindow()
+        browser.maximizeWindow();
+        require('ts-node').register({ files: true });
     },
     /**
      * Runs before a WebdriverIO command gets executed.
