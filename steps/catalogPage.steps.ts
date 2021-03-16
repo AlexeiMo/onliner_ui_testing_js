@@ -1,51 +1,16 @@
 import {CatalogPage} from 'pages/catalog.page';
-import PageSteps from "./page.steps";
 import chai from 'chai';
 const expect = chai.expect;
+import {Advised} from "aspect.js";
+import LoggerAspect from "../utils/logger.aspect";
 
 
-export class CatalogPageSteps extends PageSteps{
+@Advised(LoggerAspect)
+export class CatalogPageSteps{
 
     private catalogPage = new CatalogPage();
 
-    get openCategoryMsg() {
-        return 'Open specified category';
-    }
-
-    get openSubcategoryMsg() {
-        return 'Open specified subcategory';
-    }
-
-    get openProductCategoryMsg() {
-        return 'Open specified product category';
-    }
-
-    get markProductToCompareMsg() {
-        return 'Mark product as "Compared"';
-    }
-
-    get openCompareFormMsg() {
-        return 'Open compare form';
-    }
-
-    get getProductTitleMsg() {
-        return 'Getting product title';
-    }
-
-    get verifyCompareMsg() {
-        return 'Verifying compare process';
-    }
-
-    get clearCompMsg() {
-        return 'Clear compare popup';
-    }
-
-    get openProductPageMsg() {
-        return 'Opening specified product page';
-    }
-
     public openCategory(name: string) {
-        this.log(this.openCategoryMsg);
         browser.waitUntil(() => {
             return this.catalogPage.categoriesButtons.length > 0;
         })
@@ -53,7 +18,6 @@ export class CatalogPageSteps extends PageSteps{
     }
 
     public openSubcategory(name: string) {
-        this.log(this.openSubcategoryMsg);
         browser.waitUntil(() => {
             return this.catalogPage.subCategories.length > 0;
         })
@@ -61,7 +25,6 @@ export class CatalogPageSteps extends PageSteps{
     }
 
     public openProductCategory(name: string) {
-        this.log(this.openProductCategoryMsg);
         browser.waitUntil(() => {
             return this.catalogPage.productCategoriesButtons.length > 0;
         })
@@ -69,7 +32,6 @@ export class CatalogPageSteps extends PageSteps{
     }
 
     public markProductToCompare(index: number) {
-        this.log(this.markProductToCompareMsg);
         browser.waitUntil(() => {
             return this.catalogPage.compareCheckboxes.length > 0;
         })
@@ -77,12 +39,10 @@ export class CatalogPageSteps extends PageSteps{
     }
 
     public openCompareForm() {
-        this.log(this.openCompareFormMsg);
         this.catalogPage.clickCompareButton();
     }
 
     public getProductTitle(index: number) {
-        this.log(this.getProductTitleMsg);
         browser.waitUntil(() => {
             return this.catalogPage.productsTitles.length > 0;
         })
@@ -90,7 +50,6 @@ export class CatalogPageSteps extends PageSteps{
     }
 
     public verifyCompare(url: string, title1: string, title2: string) {
-        this.log(this.verifyCompareMsg);
         browser.waitUntil(() => {
             return this.catalogPage.comparedProducts.length === 2;
         })
@@ -102,12 +61,10 @@ export class CatalogPageSteps extends PageSteps{
     }
 
     public clearCompare() {
-        this.log(this.clearCompMsg);
         this.catalogPage.clickClearCompareButton();
     }
 
     public openProductPage(index: number) {
-        this.log(this.openProductPageMsg);
         browser.waitUntil(() => {
             return this.catalogPage.productPageLinks.length > 0;
         })

@@ -20,6 +20,7 @@
     "@wdio/selenium-standalone-service": "^7.1.1",
     "@wdio/spec-reporter": "^7.1.1",
     "@wdio/sync": "^7.1.1",
+    "@wdio/types": "^7.1.1",
     "chai": "^4.3.3",
     "chai-webdriverio": "^1.0.0",
     "local-runner": "^0.1.1-alpha",
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "@wdio/cli": "^7.1.1",
-    "@wdio/logger": "^7.0.0"
+    "@wdio/logger": "^7.0.0",
+    "aspect.js": "^0.8.1"
   }
 }
