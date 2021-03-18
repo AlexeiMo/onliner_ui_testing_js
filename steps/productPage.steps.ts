@@ -34,7 +34,7 @@ export class ProductPageSteps{
     }
 
     public removeProduct(url: string) {
-        if (this.isProductAdded) {
+        if(this.isProductAdded === true) {
             browser.url(url);
             this.productPage.clickRemoveProductButton();
         }

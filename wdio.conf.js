@@ -240,8 +240,6 @@ exports.config = {
             browser.takeScreenshot();
         }
     },
-
-
     /**
      * Hook that gets executed after the suite has ended
      * @param {Object} suite suite details
