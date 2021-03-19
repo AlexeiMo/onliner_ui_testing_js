@@ -21,6 +21,7 @@
     "@wdio/spec-reporter": "^7.1.1",
     "@wdio/sync": "^7.1.1",
     "@wdio/types": "^7.1.1",
+    "allure-commandline": "^2.13.8",
     "chai": "^4.3.3",
     "chai-webdriverio": "^1.0.0",
     "local-runner": "^0.1.1-alpha",
