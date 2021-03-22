@@ -21,7 +21,7 @@ export class ProductPage {
     }
 
     get removeProductButton() {
-        return $('.cart-form__offers-part.cart-form__offers-part_remove div');
+        return $('.cart-form__offers-part.cart-form__offers-part_remove a');
     }
 
     public clickProductTraders() {
