@@ -31,4 +31,4 @@ Run commands in terminal IDE:
 Run commands in terminal IDE:
 1. npm run build (build JS files from TS sources)
 2. npm run test (run Onliner UI tests)
-3. allure generate allure-results --clean -o allure-report && allure open(generate allure report)
+3. npm run report (generate allure report)

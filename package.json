@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "node_modules\\.bin\\wdio run wdio.conf.js"
+    "test": "node_modules\\.bin\\wdio run wdio.conf.js",
+    "report":  "allure generate allure-results --clean -o allure-report && allure open"
   },
   "keywords": [],
   "author": "",
